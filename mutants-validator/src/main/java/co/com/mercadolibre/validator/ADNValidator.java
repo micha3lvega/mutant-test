@@ -1,9 +1,6 @@
-/**
- *
- */
 package co.com.mercadolibre.validator;
 
-import co.com.mercado.libre.commons.dto.InvalidLengthException;
+import co.com.mercado.libre.commons.exception.InvalidLengthException;
 
 /**
  * Clase encargada de la validacion de una cadena de ADN
