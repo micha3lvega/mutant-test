@@ -23,10 +23,33 @@ public class ADNValidator {
 		// Validar tamano de las filas y columnas
 		validateADN(dna);
 
-		// Convertir el arreglo a bidimensional
-		final var matrix = createMatrix(dna);
+		return validateHor(dna) || validateVertically(dna);
+	}
 
-		return validateHor(dna);
+	/**
+	 * Metodo encargado de recorrer el arreglo de las cadenas de ADN verticalmente y
+	 * buscar 4 letras repetidas
+	 *
+	 * @param dna
+	 * @return
+	 */
+	private static boolean validateVertically(String[] dna) {
+
+		final var matriz = createMatrix(dna);
+
+		for (var i = 0; i < matriz.length; i++) {
+
+			final var base = new StringBuilder();
+			for (final String[] element : matriz) {
+				base.append(element[i]);
+			}
+
+			if (findMutation(base.toString()))
+				return true;
+
+		}
+
+		return false;
 	}
 
 	/**
@@ -38,33 +61,33 @@ public class ADNValidator {
 	 */
 	private static boolean validateHor(String[] dna) {
 
-		var counter = 1;
-
 		for (final String cadena : dna) {
 
-			final var letters = cadena.toCharArray();
-			for (var i = 0; i < letters.length; i++) {
+			if (findMutation(cadena))
+				return true;
 
-				// No validar ni la primera ni la ultima posicion
-				if (i == 0 || i == letters.length - 1) {
-					continue;
-				}
-
-				// resetea contado si la letra de la derecha no es igual a la de la izquierda
-				if (letters[i] == letters[i - 1]) {
-					counter++;
-				} else {
-					counter = 1;
-				}
-
-				// finaliza como verdadero si hay 4 letras iguales consecutivas
-				if (counter == 4)
-					return true;
-
-			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * Metodo encargado de encontrar una mutacion en la palabra recibida
+	 *
+	 * @param cadena
+	 * @return true si se encuentra repetida la palabra mas de 4 veces
+	 */
+	private static boolean findMutation(String cadena) {
+
+		final var mutations = DNASequence.MUTATIONS;
+
+		for (final String mutation : mutations) {
+			if (cadena.contains(mutation))
+				return true;
+		}
+
+		return false;
+
 	}
 
 	/**
@@ -135,7 +158,7 @@ public class ADNValidator {
 
 	public static void main(String[] args) {
 
-		final String[] dna = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCTTA", "TCACTG" };
+		final String[] dna = { "ATGCGA", "AAGTGC", "AAACCG", "GGAAAG", "CCCTTA", "TCACTG" };
 
 		if (isMutant(dna)) {
 			System.out.println("Es mutante>>>>>>>>>>>");
