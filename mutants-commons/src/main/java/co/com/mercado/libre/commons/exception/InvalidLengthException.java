@@ -1,4 +1,4 @@
-package co.com.mercado.libre.commons.dto;
+package co.com.mercado.libre.commons.exception;
 
 /**
  * Excepcion lanzada cuando una cadena de ADN no tiene el mismo tamaño de
