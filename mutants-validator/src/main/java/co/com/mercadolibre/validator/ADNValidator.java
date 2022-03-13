@@ -23,6 +23,47 @@ public class ADNValidator {
 		// Validar tamano de las filas y columnas
 		validateADN(dna);
 
+		// Convertir el arreglo a bidimensional
+		final var matrix = createMatrix(dna);
+
+		return validateHor(dna);
+	}
+
+	/**
+	 * Metodo encargado de recorrer el arreglo del ADN de forma horizontal buscando
+	 * 4 caracteres repetidos
+	 *
+	 * @param dna
+	 * @return true si alguna posicion del arreglo tiene 4 letras repetidas
+	 */
+	private static boolean validateHor(String[] dna) {
+
+		var counter = 1;
+
+		for (final String cadena : dna) {
+
+			final var letters = cadena.toCharArray();
+			for (var i = 0; i < letters.length; i++) {
+
+				// No validar ni la primera ni la ultima posicion
+				if (i == 0 || i == letters.length - 1) {
+					continue;
+				}
+
+				// resetea contado si la letra de la derecha no es igual a la de la izquierda
+				if (letters[i] == letters[i - 1]) {
+					counter++;
+				} else {
+					counter = 1;
+				}
+
+				// finaliza como verdadero si hay 4 letras iguales consecutivas
+				if (counter == 4)
+					return true;
+
+			}
+		}
+
 		return false;
 	}
 
@@ -90,6 +131,18 @@ public class ADNValidator {
 	private static void validLetter(char charAt) {
 		if (DNASequence.ALLOW_VALUES.indexOf(charAt) < 0)
 			throw new LetterInvalidException(charAt + " no es un caracter valido");
+	}
+
+	public static void main(String[] args) {
+
+		final String[] dna = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCTTA", "TCACTG" };
+
+		if (isMutant(dna)) {
+			System.out.println("Es mutante>>>>>>>>>>>");
+		} else {
+			System.out.println("<<<<<<<<<<<<<No es mutante");
+		}
+
 	}
 
 }
