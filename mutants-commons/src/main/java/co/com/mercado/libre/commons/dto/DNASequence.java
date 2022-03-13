@@ -21,6 +21,8 @@ public class DNASequence implements Serializable {
 
 	public static final String ALLOW_VALUES = "ATCG";
 
+	public static final String[] MUTATIONS = { "AAAA", "TTTT", "CCCC", "GGGG" };
+
 	private List<String> dna;
 
 }
