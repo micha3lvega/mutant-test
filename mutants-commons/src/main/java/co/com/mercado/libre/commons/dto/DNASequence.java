@@ -19,6 +19,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DNASequence implements Serializable {
 
+	public static final String ALLOW_VALUES = "ATCG";
+
 	private List<String> dna;
 
 }
