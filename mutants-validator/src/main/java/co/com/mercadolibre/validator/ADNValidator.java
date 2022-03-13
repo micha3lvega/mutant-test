@@ -1,6 +1,8 @@
 package co.com.mercadolibre.validator;
 
+import co.com.mercado.libre.commons.dto.DNASequence;
 import co.com.mercado.libre.commons.exception.InvalidLengthException;
+import co.com.mercado.libre.commons.exception.LetterInvalidException;
 
 /**
  * Clase encargada de la validacion de una cadena de ADN
@@ -40,8 +42,28 @@ public class ADNValidator {
 			if (base.length() != arrayLength)
 				throw new InvalidLengthException();
 
+			// Recorrer las letra de cada base del ADN
+			final var letters = base.toCharArray();
+			for (final char letter : letters) {
+
+				// Validar que la letra no sea invalida
+				validLetter(letter);
+
+			}
+
 		}
 
+	}
+
+	/**
+	 * Metodo que valida si los caracteres ingresados corresponden a (A,T,C,G)
+	 *
+	 * @param charAt
+	 * @throws Exception
+	 */
+	private static void validLetter(char charAt) {
+		if (DNASequence.ALLOW_VALUES.indexOf(charAt) < 0)
+			throw new LetterInvalidException(charAt + " no es un caracter valido");
 	}
 
 }
