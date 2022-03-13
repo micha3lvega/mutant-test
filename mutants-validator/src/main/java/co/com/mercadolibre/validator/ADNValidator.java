@@ -42,7 +42,7 @@ public class ADNValidator {
 			if (base.length() != arrayLength)
 				throw new InvalidLengthException();
 
-			// Recorrer las letra de cada base del ADN
+			// Recorrer las letras de cada base del ADN
 			final var letters = base.toCharArray();
 			for (final char letter : letters) {
 
@@ -53,6 +53,32 @@ public class ADNValidator {
 
 		}
 
+	}
+
+	/**
+	 * Metodo encargado de convertir un arreglo unidimensional a uno bidimensional
+	 *
+	 * @param adn
+	 * @return un arreglo bidimensional
+	 */
+	private static String[][] createMatrix(String[] adn) {
+
+		int row;
+		int column;
+
+		final var matriz = new String[adn.length][adn.length];
+
+		for (row = 0; row < adn.length; row++) {
+
+			final var cadena = adn[row];
+			for (column = 0; column < cadena.toCharArray().length; column++) {
+				final var letra = cadena.toCharArray();
+				matriz[row][column] = String.valueOf(letra[column]);
+			}
+
+		}
+
+		return matriz;
 	}
 
 	/**
