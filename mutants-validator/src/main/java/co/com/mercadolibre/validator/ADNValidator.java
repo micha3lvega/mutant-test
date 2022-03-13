@@ -19,7 +19,7 @@ public class ADNValidator {
 	public static boolean isMutant(String[] dna) {
 
 		// Validar tamano de las filas y columnas
-		validateLength(dna);
+		validateADN(dna);
 
 		return false;
 	}
@@ -29,7 +29,7 @@ public class ADNValidator {
 	 *
 	 * @param dna
 	 */
-	private static void validateLength(String[] dna) {
+	private static void validateADN(String[] dna) {
 
 		// Obtener el tamano de la cadena
 		final var arrayLength = dna.length;
