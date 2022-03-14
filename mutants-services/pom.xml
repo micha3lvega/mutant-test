@@ -18,7 +18,11 @@
 	<description>Proyecto encargado de exponer los servicios para la validacion del ADN de una persona</description>
 
 	<properties>
+
 		<java.version>11</java.version>
+		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+
 	</properties>
 
 	<dependencies>
@@ -42,12 +46,25 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
 		<!-- test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
