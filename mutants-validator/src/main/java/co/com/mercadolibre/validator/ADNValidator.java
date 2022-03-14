@@ -23,7 +23,69 @@ public class ADNValidator {
 		// Validar tamano de las filas y columnas
 		validateADN(dna);
 
-		return validateHor(dna) || validateVertically(dna);
+		return validateHor(dna) || validateVertically(dna) || validateDiag(dna);
+
+	}
+
+	/**
+	 * Metodo que se encarga de encontrar una mutacion en las filas diagonales de la
+	 * cadena
+	 *
+	 * @param dna
+	 * @return
+	 */
+	private static boolean validateDiag(String[] dna) {
+
+		final var matriz = createMatrix(dna);
+
+		// Obtener los valores de la linea en X
+		var y = 0;
+
+		var cordX = 0;
+		var cordY = 0;
+
+		while (y < dna.length - 3) {
+
+			cordX = 0;
+			final var baseAdn = new StringBuilder();
+			while (cordY < dna.length) {
+				baseAdn.append(matriz[cordX][cordY]);
+				cordY++;
+				cordX++;
+			}
+
+			if (findMutation(baseAdn.toString()))
+				return true;
+
+			y++;
+			cordY = y;
+
+		}
+
+		// Obtener los valores de la linea en Y
+		var x = 1;
+		cordX = 1;
+
+		while (x < dna.length - 3) {
+
+			cordY = 0;
+			final var baseAdn = new StringBuilder();
+			while (cordX < dna.length) {
+				baseAdn.append(matriz[cordX][cordY]);
+				cordY++;
+				cordX++;
+			}
+
+			if (findMutation(baseAdn.toString()))
+				return true;
+
+			x++;
+			cordX = x;
+
+		}
+
+		return false;
+
 	}
 
 	/**
@@ -154,18 +216,6 @@ public class ADNValidator {
 	private static void validLetter(char charAt) {
 		if (DNASequence.ALLOW_VALUES.indexOf(charAt) < 0)
 			throw new LetterInvalidException(charAt + " no es un caracter valido");
-	}
-
-	public static void main(String[] args) {
-
-		final String[] dna = { "ATGCGA", "AAGTGC", "AAACCG", "GGAAAG", "CCCTTA", "TCACTG" };
-
-		if (isMutant(dna)) {
-			System.out.println("Es mutante>>>>>>>>>>>");
-		} else {
-			System.out.println("<<<<<<<<<<<<<No es mutante");
-		}
-
 	}
 
 }
