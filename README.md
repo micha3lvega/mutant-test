@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/amcomaschi/mutants.svg?branch=master)](https://travis-ci.org/amcomaschi/mutants)
 # Detector de Mutantes:tm:
 
 Proyecto que detecta si un humano es mutante basándose en su secuencia de ADN.
