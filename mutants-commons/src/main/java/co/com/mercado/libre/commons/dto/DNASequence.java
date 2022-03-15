@@ -22,5 +22,6 @@ public class DNASequence implements Serializable {
 	public static final String[] MUTATIONS = { "AAAA", "TTTT", "CCCC", "GGGG" };
 
 	private String[] dna;
+	private boolean mutants;
 
 }
