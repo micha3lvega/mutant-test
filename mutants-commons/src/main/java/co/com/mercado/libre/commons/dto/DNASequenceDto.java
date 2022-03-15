@@ -16,11 +16,12 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class DNASequence implements Serializable {
+public class DNASequenceDto implements Serializable {
 
 	public static final String ALLOW_VALUES = "ATCG";
 	public static final String[] MUTATIONS = { "AAAA", "TTTT", "CCCC", "GGGG" };
 
+	private String id;
 	private String[] dna;
 	private boolean mutants;
 

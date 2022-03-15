@@ -3,7 +3,7 @@ package co.com.mutants.persistence.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.com.mercado.libre.commons.dto.DNASequence;
+import co.com.mercado.libre.commons.dto.DNASequenceDto;
 import co.com.mutants.persistence.entity.ValidatedDNA;
 import co.com.mutants.persistence.repository.ValidatedDNARepository;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class ValidatedDNAService {
 	 * @param sequence
 	 * @return la entidad creada
 	 */
-	public ValidatedDNA insert(DNASequence sequence) {
+	public ValidatedDNA insert(DNASequenceDto sequence) {
 
 		log.trace("[insert] sequence: {}", sequence);
 
@@ -61,7 +61,7 @@ public class ValidatedDNAService {
 	 * @param sequence
 	 * @return
 	 */
-	private String generateHash(DNASequence sequence) {
+	private String generateHash(DNASequenceDto sequence) {
 
 		final var builder = new StringBuilder();
 

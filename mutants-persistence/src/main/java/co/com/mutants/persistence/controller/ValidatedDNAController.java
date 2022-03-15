@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.com.mercado.libre.commons.dto.DNASequence;
-import co.com.mutants.persistence.entity.ValidatedDNA;
+import co.com.mercado.libre.commons.dto.DNASequenceDto;
 import co.com.mutants.persistence.services.ValidatedDNAService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,12 +24,14 @@ public class ValidatedDNAController {
 
 	@PostMapping("/mutant")
 	@ApiOperation(value = "Insertar una cadena de ADN", notes = "Inserta una cadena de ADN solo si no existe")
-	public ValidatedDNA insert(@NonNull @RequestBody(required = true) DNASequence dnaSequence) {
+	public DNASequenceDto insert(@NonNull @RequestBody(required = true) DNASequenceDto dnaSequence) {
 
 		log.trace("[insert] dnaSequence: {}", dnaSequence);
 
-		return service.insert(dnaSequence);
+		final var insertDna = service.insert(dnaSequence);
+		dnaSequence.setId(insertDna.getId());
 
+		return dnaSequence;
 	}
 
 }
