@@ -11,6 +11,7 @@ import co.com.mercado.libre.commons.dto.DNASequence;
 import co.com.mutants.persistence.entity.ValidatedDNA;
 import co.com.mutants.persistence.services.ValidatedDNAService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -23,6 +24,7 @@ public class ValidatedDNAController {
 	private ValidatedDNAService service;
 
 	@PostMapping("/mutant")
+	@ApiOperation(value = "Insertar una cadena de ADN", notes = "Inserta una cadena de ADN solo si no existe")
 	public ValidatedDNA insert(@NonNull @RequestBody(required = true) DNASequence dnaSequence) {
 
 		log.trace("[insert] dnaSequence: {}", dnaSequence);
