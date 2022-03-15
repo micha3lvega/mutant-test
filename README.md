@@ -32,8 +32,6 @@ Para saber si un humano es mutante es porque se encuentra una secuencia de cuatr
 
 ## Despliegue
 
-### Local 
-
 Usted puede desplegar esta aplicacion con el plugin de [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html): 
 
 ```shell
@@ -48,3 +46,32 @@ cd ./mutants-services/
 docker build -t mutants-services .
 docker run -p 8080:8080 -d --name mutants-services mutants-services
 ```
+
+## REST API
+
+El API Rest de este proyecto puede ser consumido de la siguiente manera:
+
+### Saber si la cadena de ADN es :alien: mutante o no
+
+#### Request
+`POST /validator/api/v1/mutant/`
+
+```shell
+curl -X POST "https://mutant-application.herokuapp.com/validator/api/v1/mutant" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"dna\":[\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"]}"
+```
+
+#### Response
+
+Es un mutante
+
+    HTTP/1.1 200 OK
+    Status: 200 OK
+    Connection: close
+    Content-Length: 0
+
+No es un mutante
+
+    HTTP/1.1 400 OK
+    Status: 400 OK
+    Connection: close
+    Content-Length: 0
