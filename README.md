@@ -30,3 +30,21 @@ Se requiere una aplicacion que sea capaz de detectar si un humano es o no un mut
 
 Para saber si un humano es mutante es porque se encuentra una secuencia de cuatro letras iguales​, de forma oblicua, horizontal o vertical.
 
+## Despliegue
+
+### Local 
+
+Usted puede desplegar esta aplicacion con el plugin de [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html): 
+
+```shell
+cd ./mutants-services/
+mvn spring-boot:run
+```
+
+Alternativamente usted puede usar el despliegue de :whale2: [Docker](https://docs.docker.com/engine/reference/commandline/run/)
+
+```shell
+cd ./mutants-services/
+docker build -t mutants-services .
+docker run -p 8080:8080 -d --name mutants-services mutants-services
+```
