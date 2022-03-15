@@ -75,3 +75,12 @@ No es un mutante
     Status: 400 OK
     Connection: close
     Content-Length: 0
+    
+## Postman
+
+
+Se ha usado [Postman](https://learning.postman.com/) una plataforma colaborativa para la documentación de servicios REST para ayudar con la visualización de la forma de consumir este proyecto.
+
+:link: Puede consumir los servicios de este proyecto a través del dashboard de postman ingresando [aquí](https://documenter.getpostman.com/view/4294452/UVsLQRUs)
+
+![Postman-screenshot](https://github.com/micha3lvega/mutant-test/blob/main/files/images/Documentacion_postman.png)
