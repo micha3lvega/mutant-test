@@ -1,5 +1,8 @@
 HELP.md
+target/
 !.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 ### STS ###
 .apt_generated
@@ -28,21 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### generate files ###
-*.jar
-/target/
-*/target/*
-!**/target/
-**/target/**
-!**/src/test/**/target/
-!**/src/main/**/target/
-
-## Maven proyects ##
-*.mvn
-/mvn/
-*/mvn/*
-!**/mvn/
-**/mvn/**
-mutants-services/mvnw
-mutants-services/mvnw.cmd
