@@ -7,6 +7,7 @@ import org.springframework.util.StopWatch;
 import org.springframework.web.client.RestTemplate;
 
 import co.com.mercado.libre.commons.dto.DNASequenceDto;
+import co.com.mercado.libre.commons.dto.DNAstatisticsDto;
 import co.com.mercadolibre.validator.ADNValidator;
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,6 +45,12 @@ public class MutantsService {
 			wacth.stop();
 			log.info("El metodo tardo {} milisegundos", wacth.getTotalTimeMillis());
 		}
+
+	}
+
+	public DNAstatisticsDto stats() {
+
+		return restTemplate.getForObject("http://localhost:8081/persitence/api/v1/stats", DNAstatisticsDto.class);
 
 	}
 
