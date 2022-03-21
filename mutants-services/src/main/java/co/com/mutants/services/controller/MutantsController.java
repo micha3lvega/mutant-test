@@ -1,15 +1,18 @@
 package co.com.mutants.services.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.com.mercado.libre.commons.dto.DNASequence;
-import co.com.mercadolibre.validator.ADNValidator;
+import co.com.mercado.libre.commons.dto.DNASequenceDto;
+import co.com.mercado.libre.commons.dto.DNAstatisticsDto;
+import co.com.mutants.services.services.MutantsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -22,15 +25,24 @@ import lombok.extern.slf4j.Slf4j;
 @Api(value = "Servicios mutantes", produces = "application/json")
 public class MutantsController {
 
+	@Autowired
+	private MutantsService service;
+
+	@GetMapping("/stats")
+	@ApiOperation(value = "Obtiene las estadisticas sobre las cadenas de ADN", notes = "Deevuelve un Json con las estadísticas de las verificaciones de ADN: {“count_mutant_dna”:40, “count_human_dna”:100: “ratio”:0.4}")
+	public DNAstatisticsDto stats() {
+		return service.stats();
+	}
+
 	@PostMapping("/mutant")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Se encontro una mutacion en el ADN recibido"),
 			@ApiResponse(code = 403, message = "No se encontro una mutacion en el ADN recibido") })
 	@ApiOperation(value = "Validacion ADN", notes = "Valida si una persona es o no mutante dependiendo de la cadena de ADN recibida")
-	public ResponseEntity<Void> isMutant(@NonNull @RequestBody(required = true) DNASequence dnaSequence) {
+	public ResponseEntity<Void> isMutant(@NonNull @RequestBody(required = true) DNASequenceDto dnaSequence) {
 
 		log.trace("[isMutant] dnaSequence: {}", dnaSequence);
 
-		final var isMutant = ADNValidator.isMutant(dnaSequence.getDna());
+		final var isMutant = service.isMutant(dnaSequence);
 
 		if (isMutant)
 			return ResponseEntity.ok(null);
