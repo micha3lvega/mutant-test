@@ -1,6 +1,6 @@
 package co.com.mercadolibre.validator;
 
-import co.com.mercado.libre.commons.dto.DNASequence;
+import co.com.mercado.libre.commons.dto.DNASequenceDto;
 import co.com.mercado.libre.commons.exception.InvalidLengthException;
 import co.com.mercado.libre.commons.exception.LetterInvalidException;
 
@@ -141,7 +141,7 @@ public class ADNValidator {
 	 */
 	private static boolean findMutation(String cadena) {
 
-		final var mutations = DNASequence.MUTATIONS;
+		final var mutations = DNASequenceDto.MUTATIONS;
 
 		for (final String mutation : mutations) {
 			if (cadena.contains(mutation))
@@ -214,7 +214,7 @@ public class ADNValidator {
 	 * @throws Exception
 	 */
 	private static void validLetter(char charAt) {
-		if (DNASequence.ALLOW_VALUES.indexOf(charAt) < 0)
+		if (DNASequenceDto.ALLOW_VALUES.indexOf(charAt) < 0)
 			throw new LetterInvalidException(charAt + " no es un caracter valido");
 	}
 

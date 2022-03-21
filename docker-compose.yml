@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build:
+      dockerfile: Dockerfile
+      context: mutants-services
+    ports:
+      - 8080:8080
+    networks:
+      - spring-cloud-network
+  persistence:
+    build:
+      dockerfile: Dockerfile
+      context: mutants-persistence
+    ports:
+      - 8081:8081
+    networks:
+      - spring-cloud-network
+networks:
+    spring-cloud-network:
+        driver: bridge

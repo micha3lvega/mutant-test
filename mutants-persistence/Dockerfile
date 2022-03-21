@@ -4,10 +4,10 @@ FROM openjdk:11
 VOLUME [ "/tmp" ]
 
 # Exponer puerto
-EXPOSE 8080
+EXPOSE 8081
 
 # Copiar jar al contenedor
-COPY ./target/mutants-services-1.0.0.jar ./
+COPY ./target/mutants-persistence-1.0.0.jar ./
 
 # Run container
-ENTRYPOINT ["java","-jar","/mutants-services-1.0.0.jar"]
+ENTRYPOINT ["java","-jar","/mutants-persistence-1.0.0.jar"]

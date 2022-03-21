@@ -1,10 +1,10 @@
-package co.com.mutants.services;
+package co.com.mutants.persistence;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MutantsServicesApplicationTests {
+class MutantsPersistenceApplicationTests {
 
 	@Test
 	void contextLoads() {
