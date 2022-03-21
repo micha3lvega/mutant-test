@@ -36,6 +36,9 @@ Para saber si un humano es mutante es porque se encuentra una secuencia de cuatr
 Usted puede desplegar esta aplicacion con el plugin de [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html): 
 
 ```shell
+mvn clean install -U
+cd ./mutants-services/
+mvn spring-boot:run
 cd ./mutants-services/
 mvn spring-boot:run
 ```
@@ -43,9 +46,7 @@ mvn spring-boot:run
 Alternativamente usted puede usar el despliegue de :whale2: [Docker](https://docs.docker.com/engine/reference/commandline/run/)
 
 ```shell
-cd ./mutants-services/
-docker build -t mutants-services .
-docker run -p 8080:8080 -d --name mutants-services mutants-services
+docker-compose up --build
 ```
 
 ## REST API
