@@ -13,5 +13,6 @@
 		<module>mutants-services</module>
 		<module>mutants-validator</module>
 		<module>mutants-persistence</module>
+		<module>mutants-amqp-messaging</module>
 	</modules>
 </project>
