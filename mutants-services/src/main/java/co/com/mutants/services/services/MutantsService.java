@@ -63,7 +63,7 @@ public class MutantsService {
 	@Async("asyncExecutor")
 	public void insertAsync(DNASequenceDto dnaSequence) {
 
-		restTemplate.postForObject("http://localhost:8081/persitence/api/v1/mutant", dnaSequence, DNASequenceDto.class);
+		restTemplate.postForObject("http://localhost:8082/queue/api/v1", dnaSequence, DNASequenceDto.class);
 
 	}
 
