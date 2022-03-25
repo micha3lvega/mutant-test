@@ -39,7 +39,7 @@ Usted puede desplegar esta aplicacion con el plugin de [Spring Boot Maven plugin
 mvn clean install -U
 cd ./mutants-services/
 mvn spring-boot:run
-cd ./mutants-services/
+cd ./mutants-persistence/
 mvn spring-boot:run
 ```
 

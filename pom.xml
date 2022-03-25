@@ -8,10 +8,15 @@
 	<packaging>pom</packaging>
 	<name>mutants-application</name>
 	<description>Aplicacion para la validacion de genes mutantes</description>
+	<properties>
+		<sonar.organization>micha3lvega</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	</properties>
 	<modules>
 		<module>mutants-commons</module>
-		<module>mutants-services</module>
 		<module>mutants-validator</module>
+		<module>mutants-services</module>
 		<module>mutants-persistence</module>
+		<module>mutants-amqp-messaging</module>
 	</modules>
 </project>
