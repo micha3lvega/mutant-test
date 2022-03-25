@@ -12,6 +12,10 @@ import co.com.mercado.libre.commons.exception.LetterInvalidException;
  */
 public class ADNValidator {
 
+	private ADNValidator() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * Metodo encargado de validar si un adn tiene una mutacion o no
 	 *
