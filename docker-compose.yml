@@ -16,6 +16,16 @@ services:
       - 8081:8081
     networks:
       - spring-cloud-network
+  amqp:
+    build:
+      dockerfile: Dockerfile
+      context: mutants-amqp-messaging
+    ports:
+      - 8082:8082
+    networks:
+      - spring-cloud-network
+    depends_on:
+      - rabbitmq
 networks:
     spring-cloud-network:
         driver: bridge
